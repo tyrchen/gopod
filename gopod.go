@@ -144,6 +144,7 @@ type Item struct {
 	TunesSummary   	string `xml:"itunes:summary,omitempty"`
 	TunesExplicit  	string `xml:"itunes:explicit,omitempty"`
 	TunesDuration  	string `xml:"itunes:duration,omitempty"`
+	TunesImage		[]*TunesImage
 
 	Enclosure		[]*Enclosure
 
@@ -390,4 +391,10 @@ func (i *Item) SetEnclosure(url string, length string, eType string) {
 			Length:	length,
 			Type:	eType,
 		})
+}
+
+func (i *Item) SetTunesImage(url string) {
+	i.TunesImage = append(i.TunesImage, &TunesImage{
+			Href:	url,
+	})
 }
